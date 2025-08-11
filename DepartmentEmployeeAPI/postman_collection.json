@@ -1,0 +1,101 @@
+{
+  "info": {
+    "name": "Department & Employee Management API",
+    "_postman_id": "b14e3e8a-4f6d-4b47-a0d2-f40f32a5671e",
+    "description": "Postman collection for CRUD and salary adjustment endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Department",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/departments",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Finance\",\n  \"code\": \"FI01\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Get Department by ID",
+      "request": { "method": "GET", "url": "{{baseUrl}}/departments/1" }
+    },
+    {
+      "name": "Get All Departments",
+      "request": { "method": "GET", "url": "{{baseUrl}}/departments" }
+    },
+    {
+      "name": "Update Department",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/departments/4",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Finance Updated\",\n  \"code\": \"FI02\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Delete Department",
+      "request": { "method": "DELETE", "url": "{{baseUrl}}/departments/1" }
+    },
+    {
+      "name": "Force Delete Department",
+      "request": { "method": "DELETE", "url": "{{baseUrl}}/departments/1?force=true" }
+    },
+    {
+      "name": "Create Employee",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/employees",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"salary\": 85000,\n  \"joiningDate\": \"2016-08-12\",\n  \"departmentId\": 4\n}"
+        }
+      }
+    },
+    {
+      "name": "Get Employee by ID",
+      "request": { "method": "GET", "url": "{{baseUrl}}/employees/5" }
+    },
+    {
+      "name": "Get All Employees",
+      "request": { "method": "GET", "url": "{{baseUrl}}/employees" }
+    },
+    {
+      "name": "Update Employee",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/employees/5",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"John Smith\",\n  \"email\": \"johnsmith@example.com\",\n  \"salary\": 95000,\n  \"joiningDate\": \"2015-06-15\",\n  \"departmentId\": 2\n}"
+        }
+      }
+    },
+    {
+      "name": "Delete Employee",
+      "request": { "method": "DELETE", "url": "{{baseUrl}}/employees/2" }
+    },
+    {
+      "name": "Adjust Salary",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/employees/adjust-salary",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"departmentId\": 3,\n  \"performanceScore\": 85\n}"
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" }
+  ]
+}
